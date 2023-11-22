@@ -3,7 +3,7 @@
   "name": "Behavior Proxy",
   "version": "1.0",
   "manifest_version": 2,
-  "browser_action": {
+  "browser_action": { 
     "default_popup": "index.html",
     "default_title": "Behavior Proxy"
   },
@@ -13,9 +13,6 @@
     ],
     "persistent": false
   },
-  "permissions": [
-    "<all_urls>"
-  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
