@@ -7,6 +7,15 @@
     "default_popup": "index.html",
     "default_title": "Behavior Proxy"
   },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "<all_urls>"
+  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
