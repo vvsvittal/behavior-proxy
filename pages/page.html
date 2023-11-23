@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script>
+    var isTracked = false // True if the current site is tracking the user, else false
+
+    function setTracked(value){
+        isTracked = value
+        document.getElementById('tracked').innerHTML = "You " + (isTracked ? "are" : "are not") + " being tracked";
+    }
+</script>
+<head>
+    <title>Love Replacer Extension</title>
+    <link href="../assets/styles/output.css" rel="stylesheet">
+    <style>
+        body {
+            min-width: 300px;
+            /* Adjust as needed */
+            min-height: 400px;
+            /* Adjust as needed */
+        }
+    </style>
+</head>
+<body class="backdrop-blur-xl bg-gradient-to-t from-[#070E25] to-black">
+    <script src="page.js"></script>
+    <header class="w-full transition duration-300 ease-in-out p-2">
+        <p class="text-center text-white font-bold text-lg">Behavior Proxy</p>
+    </header>
+    <p id="tracked" class="text-white">You are being tracked</p>
+    <script>
+        document.getElementById('tracked').innerHTML = "You " + (isTracked ? "are" : "are not") + " being tracked";
+    </script>
+    <button id="replace-button" class="bg-red-500 p-3">Replace</button>
+</body>
+
+</html>

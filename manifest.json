@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Behavior Proxy",
+  "description": "Mask your identity online from behavior tracking",
+  "version": "1.0",
+  "action": {
+    "default_popup": "pages/page.html"
+  },
+  "permissions": ["activeTab", "declarativeContent", "scripting"],
+  "background": {
+    "service_worker": "service-worker.js"
+  }
+}
