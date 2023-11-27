@@ -1,4 +1,4 @@
-const elements = document.querySelectorAll('*');
+var elements = document.querySelectorAll('*');
 elements.forEach((element) => {
   element.childNodes.forEach((node) => {
     if (node.nodeType === Node.TEXT_NODE) {
