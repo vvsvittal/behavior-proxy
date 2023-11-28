@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var isTracked = setTracked(false) // True if the current site is tracking the user, else false
+  var isTracked; // True if the current site is tracking the user, else false
   var proxyOn = loadProtectedState('proxyOn')
+  chrome.runtime.sendMessage({ backgroundLoad: true });
+
+  chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    
+    if (request.usesGA != null){
+      chrome.runtime.sendMessage({ msg: "Message Received in Page" });
+      chrome.runtime.sendMessage({ msg: request.usesGA });
+      isTracked = setTracked(request.usesGA || false)
+    }
+  })
+
+
+  
   
  //Load the saved state of proxy
   
@@ -19,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
   sessionLabel.innerHTML = sessionCount
 
   function setTracked(value) {
-    document.getElementById('isTracked').innerHTML = (isTracked ? "are" : "are not")
-    document.getElementById('isTracked').className = (isTracked ? "text-red-500 font-bold" : "text-green-500 font-bold")
+    document.getElementById('isTracked').innerHTML = (value ? "are" : "are not")
+    document.getElementById('isTracked').className = (value ? "text-red-500 font-bold" : "text-green-500 font-bold")
     return value
   }
 

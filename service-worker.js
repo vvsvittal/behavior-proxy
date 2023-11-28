@@ -8,7 +8,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       chrome.scripting
         .executeScript({
           target: { tabId: tabs[0].id },
-          files: ['scripts/content-script.js'],
+          files: ['scripts/proxy-script.js'],
+        })
+        .then(() => {
+          console.log('Executed script');
+        });
+    });
+  }
+  if (request.backgroundLoad){
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.scripting
+        .executeScript({
+          target: { tabId: tabs[0].id },
+          files: ['scripts/background-script.js'],
         })
         .then(() => {
           console.log('Executed script');

@@ -11,14 +11,3 @@ elements.forEach((element) => {
   });
 });
 
-var pageScripts = document.getElementsByTagName('script');
-let externalScripts = 0
-for (let script of pageScripts){
-    if (script.src){
-      externalScripts++
-    }
-    else {
-      let inlineScripts = script.innerHTML
-      console.log(inlineScripts)
-    }
-}
