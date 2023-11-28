@@ -1,3 +1,5 @@
+
+
 var elements = document.querySelectorAll('*');
 elements.forEach((element) => {
   element.childNodes.forEach((node) => {

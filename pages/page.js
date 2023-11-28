@@ -1,35 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
   var isTracked; // True if the current site is tracking the user, else false
-  var proxyOn = loadProtectedState('proxyOn')
+  var clickCount;
+  var mouseMoveCount;
+  var scrollCount;
+  var proxyOn = loadProtectedState(['proxyOn', 'clickCount', 'scrollCount', 'mouseMoveCount'])
   chrome.runtime.sendMessage({ backgroundLoad: true });
 
   chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    
-    if (request.usesGA != null){
+
+    if (request.usesGA != null) {
       chrome.runtime.sendMessage({ msg: "Message Received in Page" });
       chrome.runtime.sendMessage({ msg: request.usesGA });
       isTracked = setTracked(request.usesGA || false)
     }
   })
 
-
-  
-  
- //Load the saved state of proxy
-  
-
-  var clickCount = 0
-  var sessionCount = 0
-  var scrollCount = 0
-
   let clickLabel = document.getElementById('click-count')
   let scrollLabel = document.getElementById('scroll-count')
-  let sessionLabel = document.getElementById('session-count')
+  let mouseMoveLabel = document.getElementById('session-count')
   let protectedLabel = document.getElementById('protected')
-
-  clickLabel.innerHTML = clickCount
-  scrollLabel.innerHTML = scrollCount
-  sessionLabel.innerHTML = sessionCount
 
   function setTracked(value) {
     document.getElementById('isTracked').innerHTML = (value ? "are" : "are not")
@@ -51,25 +40,32 @@ document.addEventListener('DOMContentLoaded', function () {
     data[key] = state
     chrome.storage.local.set(data, () => {
       chrome.runtime.sendMessage({ msg: "save" });
-       chrome.runtime.sendMessage({ msg: state });
+      chrome.runtime.sendMessage({ msg: state });
     })
   }
 
-  function loadProtectedState(key) {
-    chrome.storage.local.get([key], (result) => {
-      proxyOn = result.proxyOn || false;
+  function loadProtectedState(keys) {
+    chrome.storage.local.get(keys, (results) => {
+      chrome.runtime.sendMessage({ msg: results });
+      proxyOn = results.proxyOn || false;
+      clickCount = results.clickCount > 0 ? results.clickCount : 0
+      scrollCount = results.scrollCount > 0 ? results.scrollCount : 0
+      mouseMoveCount = results.mouseMoveCount > 0 ? results.mouseMoveCount : 0
       chrome.runtime.sendMessage({ msg: "load" });
-      chrome.runtime.sendMessage({ msg: result.proxyOn });
+      chrome.runtime.sendMessage({ msg: results.proxyOn });
       renderSavedValues();
     })
   }
 
-  function renderSavedValues(){
+  function renderSavedValues() {
     let path1 = document.getElementById('path1')
     let path2 = document.getElementById('path2')
     path1.style = proxyOn ? "fill:#16a34a" : "fill:#2563eb"
     path2.style = proxyOn ? "fill:#16a34a" : "fill:#2563eb"
     protectedLabel.innerHTML = (proxyOn ? "Protected" : "Not Protected")
+    clickLabel.innerHTML = clickCount
+    scrollLabel.innerHTML = scrollCount
+    mouseMoveLabel.innerHTML = mouseMoveCount
   }
 });
 
