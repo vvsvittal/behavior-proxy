@@ -6,7 +6,7 @@
   "action": {
     "default_popup": "pages/page.html"
   },
-  "permissions": ["activeTab", "declarativeContent", "scripting"],
+  "permissions": ["activeTab", "declarativeContent", "scripting", "storage"],
   "background": {
     "service_worker": "service-worker.js"
   }

@@ -1,6 +1,9 @@
 //listens for the event and fires a event to execute content.js
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.replace) {
+  if (request.msg){
+    console.log(request.msg)
+  }
+   if (request.replace) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.scripting
         .executeScript({
