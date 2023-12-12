@@ -45,8 +45,6 @@ document.addEventListener('mousemove', () => {
     let data = {}
     data[key] = state
     chrome.storage.local.set(data, () => {
-      chrome.runtime.sendMessage({ msg: "save" });
-       chrome.runtime.sendMessage({ msg: state });
     })
   }
 

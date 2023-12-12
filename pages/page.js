@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     proxyOn = !proxyOn
     renderSavedValues()
     saveProtectedState('proxyOn', proxyOn)
-    chrome.runtime.sendMessage({ replace: true });
+    proxyOn ? chrome.runtime.sendMessage({ proxyOn: true }) : chrome.runtime.sendMessage({ proxyOff: true }) ;
   });
 
 
@@ -46,13 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function loadProtectedState(keys) {
     chrome.storage.local.get(keys, (results) => {
-      chrome.runtime.sendMessage({ msg: results });
       proxyOn = results.proxyOn || false;
+      proxyOn ? chrome.runtime.sendMessage({ proxyOn: true }) : chrome.runtime.sendMessage({ proxyOff: true }) ;
       clickCount = results.clickCount > 0 ? results.clickCount : 0
       scrollCount = results.scrollCount > 0 ? results.scrollCount : 0
       mouseMoveCount = results.mouseMoveCount > 0 ? results.mouseMoveCount : 0
-      chrome.runtime.sendMessage({ msg: "load" });
-      chrome.runtime.sendMessage({ msg: results.proxyOn });
       renderSavedValues();
     })
   }

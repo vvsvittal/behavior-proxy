@@ -1,0 +1,206 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||googletagmanager.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||google-analytics.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||facebook.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+    {
+        "id": 4,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||tags.tiqcdn.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||collect.tealiumiq.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||adobe.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+     {
+        "id": 7,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||ensighten.com ",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+     {
+        "id": 8,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||impact.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+     {
+        "id": 9,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||mixpanel.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+     {
+        "id": 10,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||segment.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+     {
+        "id": 11,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||piwik.pro",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    },
+     {
+        "id": 12,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "||amplitude.com",
+            "resourceTypes": [
+                "script",
+                "main_frame",
+                "sub_frame",
+                "webtransport",
+                "websocket"
+            ]
+        }
+    }
+]
