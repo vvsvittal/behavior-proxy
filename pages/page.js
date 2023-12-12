@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
   var isTracked; // True if the current site is tracking the user, else false
   var clickCount;
-  var mouseMoveCount;
+  var keyPressCount;
   var scrollCount;
-  var proxyOn = loadProtectedState(['proxyOn', 'clickCount', 'scrollCount', 'mouseMoveCount'])
+  var proxyOn = loadProtectedState(['proxyOn', 'clickCount', 'scrollCount', 'keyPressCount'])
   chrome.runtime.sendMessage({ backgroundLoad: true });
 
   chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
     if (request.usesGA != null) {
-      chrome.runtime.sendMessage({ msg: "Message Received in Page" });
-      chrome.runtime.sendMessage({ msg: request.usesGA });
       isTracked = setTracked(request.usesGA || false)
     }
   })
@@ -50,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
       proxyOn ? chrome.runtime.sendMessage({ proxyOn: true }) : chrome.runtime.sendMessage({ proxyOff: true }) ;
       clickCount = results.clickCount > 0 ? results.clickCount : 0
       scrollCount = results.scrollCount > 0 ? results.scrollCount : 0
-      mouseMoveCount = results.mouseMoveCount > 0 ? results.mouseMoveCount : 0
+      keyPressCount = results.keyPressCount > 0 ? results.keyPressCount : 0
       renderSavedValues();
     })
   }
@@ -63,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
     protectedLabel.innerHTML = (proxyOn ? "Protected" : "Not Protected")
     clickLabel.innerHTML = clickCount
     scrollLabel.innerHTML = scrollCount
-    mouseMoveLabel.innerHTML = mouseMoveCount
+    mouseMoveLabel.innerHTML = keyPressCount
   }
 });
 
