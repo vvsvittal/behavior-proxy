@@ -26,6 +26,7 @@ var keyPressCount;
 var listenClick;
 var listenScroll;
 var listenKeyPress;
+let scrollTimeout;
 
 loadProtectedState(['clickCount', 'scrollCount', 'keyPressCount'])
 
@@ -43,8 +44,13 @@ if (typeof listenScroll !== "undefined") {
 }
 else{
   listenScroll = () => {
-  scrollCount++
-  saveProtectedState('scrollCount', scrollCount)
+  if (!scrollTimeout) {
+      scrollCount++
+      saveProtectedState('scrollCount', scrollCount)
+      scrollTimeout = setTimeout(() => {
+        scrollTimeout = null;
+      }, 1000); // 1s delay
+    }
 }
 }
 if (typeof listenKeyPress !== "undefined") {
