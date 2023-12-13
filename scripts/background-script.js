@@ -26,7 +26,7 @@ var keyPressCount;
 var listenClick;
 var listenScroll;
 var listenKeyPress;
-let scrollTimeout;
+var scrollTimeout;
 
 loadProtectedState(['clickCount', 'scrollCount', 'keyPressCount'])
 
