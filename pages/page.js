@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var keyPressCount;
   var scrollCount;
   var proxyOn = loadProtectedState(['proxyOn', 'clickCount', 'scrollCount', 'keyPressCount'])
-  chrome.runtime.sendMessage({ backgroundLoad: true });
+  chrome.runtime.sendMessage({ attach: true });
 
   chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 

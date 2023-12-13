@@ -40,7 +40,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         .catch(error => console.error('Error:', error));
     });
   }
-  if (request.backgroundLoad) {
+  if (request.attach) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.scripting
         .executeScript({
