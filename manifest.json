@@ -6,8 +6,17 @@
   "action": {
     "default_popup": "pages/page.html"
   },
-  "permissions": ["activeTab", "declarativeContent", "scripting", "storage"],
+  "permissions": ["activeTab", "declarativeContent", "scripting", "storage", "webRequest", "declarativeNetRequest",  "declarativeNetRequestWithHostAccess"],
   "background": {
     "service_worker": "service-worker.js"
-  }
+  },
+   "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["scripts/rules.json"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
